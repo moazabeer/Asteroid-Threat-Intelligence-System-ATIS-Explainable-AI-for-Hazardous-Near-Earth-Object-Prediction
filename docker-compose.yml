@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  atis-train:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: atis-training
+    volumes:
+      - ./models:/app/models
+      - ./output:/app/output
+      - ./logs:/app/logs
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python -m src.train
+    networks:
+      - atis-network
+
+  atis-inference:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: atis-inference
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./output:/app/output
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - atis-train
+    command: python -m src.inference
+    networks:
+      - atis-network
+
+networks:
+  atis-network:
+    driver: bridge
