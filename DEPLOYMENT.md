@@ -45,35 +45,7 @@ docker run --rm -v $(pwd)/models:/app/models -v $(pwd)/data:/app/data atis:lates
 
 ### Docker Compose
 
-Create `docker-compose.yml`:
-
-```yaml
-version: '3.8'
-
-services:
-  atis-train:
-    build: .
-    container_name: atis-training
-    volumes:
-      - ./models:/app/models
-      - ./output:/app/output
-    environment:
-      - PYTHONUNBUFFERED=1
-    command: python -m src.train
-
-  atis-inference:
-    build: .
-    container_name: atis-inference
-    volumes:
-      - ./models:/app/models
-      - ./data:/app/data
-    environment:
-      - PYTHONUNBUFFERED=1
-    depends_on:
-      - atis-train
-```
-
-Run with:
+The repository already includes a `docker-compose.yml`. Run it with:
 
 ```bash
 docker-compose up

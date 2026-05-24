@@ -1,4 +1,7 @@
+LICENSE
+MANIFEST.in
 README.md
+requirements.txt
 setup.py
 atis.egg-info/PKG-INFO
 atis.egg-info/SOURCES.txt
