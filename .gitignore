@@ -1,0 +1,9 @@
+# Ignore the data files downloaded from Kaggle
+*.csv
+dataset/
+*.zip
+
+# Ignore temporary Python files
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
