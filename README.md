@@ -33,9 +33,10 @@ Asteroids are significant celestial bodies whose tracking and classification are
 To run this project locally, clone the repository and install the required dependencies:
 
 ```bash
-git clone https://github.com/your-username/ATIS-Asteroid-Threat-Intelligence.git
-cd ATIS-Asteroid-Threat-Intelligence
-pip install lightgbm xgboost catboost optuna shap imbalanced-learn scikit-learn pandas numpy matplotlib seaborn kagglehub
+git clone https://github.com/moazabeer/Asteroid-Threat-Intelligence-System-ATIS-Explainable-AI-for-Hazardous-Near-Earth-Object-Prediction.git
+cd Asteroid-Threat-Intelligence-System-ATIS-Explainable-AI-for-Hazardous-Near-Earth-Object-Prediction
+python -m pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
 ## 📖 Usage
@@ -43,12 +44,12 @@ pip install lightgbm xgboost catboost optuna shap imbalanced-learn scikit-learn 
 1. **Dataset Download**: The script automatically downloads the dataset via `kagglehub`. Ensure you have a Kaggle account/API key configured if necessary, or simply run the script to let `kagglehub` handle it.
 2. **Execution**:
    ```bash
-   python asteroid_threat_intelligence_system_(atis).py
+   python -m src.train
    ```
 3. **Outputs**:
    - Model performance metrics (Accuracy, Precision, Recall, F1, AUC).
-   - Confusion matrices.
-   - SHAP summary plots indicating the most influential features for hazard prediction.
+   - Serialized models and preprocessing artifacts saved in `models/`.
+   - CSV predictions from `python -m src.inference <input.csv>` or `atis-predict <input.csv>`.
 
 ## 📊 Dataset
 

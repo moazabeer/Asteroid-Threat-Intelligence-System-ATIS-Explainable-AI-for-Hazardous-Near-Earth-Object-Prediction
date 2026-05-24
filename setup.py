@@ -1,17 +1,25 @@
-"""Setup configuration for ATIS package"""
+"""Setup configuration for the ATIS package."""
 
-from setuptools import setup, find_packages
+from pathlib import Path
 
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
+from setuptools import find_packages, setup
 
-with open("requirements.txt", "r", encoding="utf-8") as fh:
-    requirements = [line.strip() for line in fh if line.strip() and not line.startswith("#")]
+ROOT = Path(__file__).parent.resolve()
+README = ROOT / "README.md"
+REQUIREMENTS = ROOT / "requirements.txt"
+
+long_description = README.read_text(encoding="utf-8")
+requirements = [
+    line.strip()
+    for line in REQUIREMENTS.read_text(encoding="utf-8").splitlines()
+    if line.strip() and not line.startswith("#")
+]
 
 setup(
     name="atis",
     version="1.0.0",
     author="ATIS Contributors",
+    license="MIT",
     description="Asteroid Threat Intelligence System - Explainable AI for Hazardous Near-Earth Object Prediction",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -22,7 +30,6 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
-        "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Intended Audience :: Science/Research",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
@@ -32,7 +39,7 @@ setup(
     entry_points={
         "console_scripts": [
             "atis-train=src.train:main",
-            "atis-predict=src.inference:batch_predict",
+            "atis-predict=src.inference:main",
         ],
     },
 )
