@@ -1,0 +1,13 @@
+README.md
+setup.py
+atis.egg-info/PKG-INFO
+atis.egg-info/SOURCES.txt
+atis.egg-info/dependency_links.txt
+atis.egg-info/entry_points.txt
+atis.egg-info/requires.txt
+atis.egg-info/top_level.txt
+src/__init__.py
+src/inference.py
+src/train.py
+tests/__init__.py
+tests/test_basic.py

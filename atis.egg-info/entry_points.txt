@@ -1,0 +1,3 @@
+[console_scripts]
+atis-predict = src.inference:batch_predict
+atis-train = src.train:main
